@@ -1,101 +1,140 @@
-import Image from "next/image";
+'use client';
+
+import { ContainerScroll } from '@/components/ui/container-scroll-animation';
+import Image from 'next/image';
+import { assets } from './assets';
+import { Navbar } from '@/components/ui/navbar';
+import FeaturesSection from '@/components/blocks/features-section';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from '@/components/ui/card';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    const planDetail = {
+        basic: [
+            '1 User Account',
+            'Basic Inventory Management (up to 100 items)',
+            'Ordering Feature (up to 5 suppliers)',
+            'Monthly Sales Reports',
+            'Email Support',
+        ],
+        pro: [
+            '5 User Accounts',
+            'Advanced Inventory Management (up to 1,000 items)',
+            'Ordering Feature (up to 20 suppliers)',
+            'Weekly and Monthly Sales Reports',
+            'Priority Email Support',
+            'Integration with Accounting Software',
+        ],
+        enterprise: [
+            'Unlimited User Accounts',
+            'Enterprise-Level Inventory Management (unlimited items)',
+            'Ordering Feature (unlimited suppliers)',
+            'Daily, Weekly, and Monthly Sales Reports',
+            'Dedicated Account Manager',
+            '24/7 Priority Support',
+            'Custom Integrations',
+            'Advanced Security Features',
+        ],
+    };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    return (
+        <div className="relative w-full flex flex-col items-center justify-center">
+            <Navbar className="shadow-lg rounded-full" />
+            <ContainerScroll
+                titleComponent={
+                    <h1 className="text-4xl font-semibold text-black dark:text-white">
+                        Ease your business with our <br />
+                        <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
+                            Inventory Management
+                        </span>
+                    </h1>
+                }>
+                <Image
+                    src={assets.invence}
+                    alt="hero"
+                    height={720}
+                    width={1400}
+                    className="mx-auto rounded-2xl object-cover h-full object-left-top"
+                    draggable={false}
+                />
+            </ContainerScroll>
+            <FeaturesSection />
+            <div className="flex flex-col justify-center gap-8">
+                <span className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+                    Pick your plan
+                </span>
+                <div className="flex flex-col w-full gap-4 sm:flex-row sm:gap-8 px-4 sm:px-8">
+                    <Card className="w-full">
+                        <CardHeader>
+                            <CardTitle>Basic</CardTitle>
+                            <CardTitle>5$/month</CardTitle>
+                            <CardDescription>
+                                Basic plan for small businesses
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            {planDetail.basic.map((item, index) => (
+                                <div className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0">
+                                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-black" />
+                                    <div className="space-y-1">
+                                        <p className="text-sm font-medium leading-none">
+                                            {item}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </CardContent>
+                    </Card>
+                    <Card className="w-full">
+                        <CardHeader>
+                            <CardTitle>Pro</CardTitle>
+                            <CardTitle>10$/month</CardTitle>
+                            <CardDescription>
+                                Medium to large businesses, most recommended !
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            {planDetail.pro.map((item, index) => (
+                                <div className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0">
+                                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-black" />
+                                    <div className="space-y-1">
+                                        <p className="text-sm font-medium leading-none">
+                                            {item}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </CardContent>
+                    </Card>
+                    <Card className="w-full">
+                        <CardHeader>
+                            <CardTitle>Enterprise</CardTitle>
+                            <CardTitle>50$/month</CardTitle>
+                            <CardDescription>
+                                Large enterprise, for the most advanced
+                                businesses
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            {planDetail.enterprise.map((item, index) => (
+                                <div className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0">
+                                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-black" />
+                                    <div className="space-y-1">
+                                        <p className="text-sm font-medium leading-none">
+                                            {item}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
