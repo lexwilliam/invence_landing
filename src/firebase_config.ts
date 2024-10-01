@@ -16,4 +16,13 @@ admin.initializeApp({
 
 export const analytics = getAnalytics(firebaseApp);
 export const firestore = getFirestore(firebaseApp);
+export const adminAuth = admin.auth();
 export const adminFirestore = admin.firestore();
+
+export const firestoreConfig = {
+    collection: {
+        transaction_summary: 'transactions_summary',
+        transaction: "transaction"
+    },
+    
+}
