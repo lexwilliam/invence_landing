@@ -107,14 +107,7 @@ export const SkeletonOne = () => {
     <div className="relative flex py-8 px-2 gap-10 h-full">
       <div className="w-full  p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
         <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
-          {/* TODO */}
-          <Image
-            src="/linear.webp"
-            alt="header"
-            width={800}
-            height={800}
-            className="h-full w-full aspect-square object-cover object-left-top rounded-sm"
-          />
+          
         </div>
       </div>
 
@@ -172,7 +165,7 @@ export const SkeletonTwo = () => {
 export const SkeletonFour = () => {
   return (
     <div className="h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10">
-      <Globe className="absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72" />
+      {/* <Globe className="absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72" /> */}
     </div>
   );
 };
