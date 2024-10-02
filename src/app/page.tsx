@@ -5,19 +5,10 @@ import Image from 'next/image';
 import { assets } from './assets';
 import { Navbar } from '@/components/ui/navbar';
 import FeaturesSection from '@/components/blocks/features-section';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
 import { PlanCards } from '@/components/ui/plan_cards';
 import { ContactUsFooter } from '@/components/ui/contact_us_footer';
 
 export default function Home() {
-    
-
     return (
         <div className="relative w-full flex flex-col items-center justify-center">
             <Navbar className="shadow-lg rounded-full" />
