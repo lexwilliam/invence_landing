@@ -12,10 +12,10 @@ export async function POST(req: NextRequest) {
     //     return `${branchId}-${formattedDate}`;
     // }
 
-    // const idToken = req.headers.get('Authorization');
-    // if (!idToken) {
-    //     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
-    // }
+    const idToken = req.headers.get('Authorization');
+    if (!idToken) {
+        return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    }
     try {
     //     adminAuth.verifyIdToken(idToken);
     //     const body = (await req.json()) as Transaction;
