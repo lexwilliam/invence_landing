@@ -11,7 +11,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
     function createTransactionSummaryId(transaction: Transaction): string {
-        const date = transaction.created_at;
+        const date = new Date(transaction.created_at);
         const formattedDate = date.toISOString().split('T')[0];
         const branchId = transaction.branch_uuid.split('-')[0];
         return `${branchId}-${formattedDate}`;
