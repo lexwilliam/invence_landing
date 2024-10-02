@@ -11,7 +11,8 @@ import admin from 'firebase-admin';
 // Initialize Firebase
 const firebaseApp = initializeApp(env.firebase);
 admin.initializeApp({
-    credential: credential.cert(JSON.stringify(env.admin)),
+    credential: credential.applicationDefault(),
+    databaseURL: `https://${env.admin.project_id}.firebaseio.com`,
 });
 
 export const analytics = getAnalytics(firebaseApp);
@@ -24,5 +25,4 @@ export const firestoreConfig = {
         transaction_summary: 'transactions_summary',
         transaction: "transaction"
     },
-    
 }
