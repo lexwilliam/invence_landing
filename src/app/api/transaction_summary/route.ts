@@ -6,11 +6,17 @@ import {
 } from '@/firebase_config';
 import { Transaction } from '@/model/transaction/transaction';
 import { TransactionSummary } from '@/model/transaction/transaction_summary';
-import { NextApiRequest } from 'next';
 import { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
+    function createTransactionSummaryId(transaction: Transaction): string {
+        const date = transaction.created_at;
+        const formattedDate = date.toISOString().split('T')[0];
+        const branchId = transaction.branch_uuid.split('-')[0];
+        return `${branchId}-${formattedDate}`;
+    }
+
     const idToken = req.headers.get('Authorization');
     if (!idToken) {
         return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
@@ -47,11 +53,4 @@ export async function POST(req: NextRequest) {
     } catch (error) {
         return NextResponse.json('Internal Server Error', { status: 500 });
     }
-}
-
-function createTransactionSummaryId(transaction: Transaction): string {
-    const date = transaction.created_at;
-    const formattedDate = date.toISOString().split('T')[0];
-    const branchId = transaction.branch_uuid.split('-')[0];
-    return `${branchId}-${formattedDate}`;
 }
