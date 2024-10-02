@@ -17,14 +17,14 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
     try {
-    //     adminAuth.verifyIdToken(idToken);
-    //     const body = (await req.json()) as Transaction;
-    //     let summary;
-    //     const docId = body.uuid;
-    //     const doc = await adminFirestore
-    //         .collection(firestoreConfig.collection.transaction_summary)
-    //         .doc(docId)
-    //         .get();
+        adminAuth.verifyIdToken(idToken);
+        const body = (await req.json()) as Transaction;
+        let summary;
+        const docId = body.uuid;
+        const doc = await adminFirestore
+            .collection(firestoreConfig.collection.transaction_summary)
+            .doc(docId)
+            .get();
     //     if (doc.exists) {
     //         const oldSummary = doc.data() as TransactionSummary;
     //         summary = {
