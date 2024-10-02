@@ -7,16 +7,17 @@ import {
 import { Transaction } from '@/model/transaction/transaction';
 import { TransactionSummary } from '@/model/transaction/transaction_summary';
 import { NextApiRequest } from 'next';
+import { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-export async function POST(req: NextApiRequest) {
-    const idToken = req.headers.authorization?.split('Bearer ')[1];
+export async function POST(req: NextRequest) {
+    const idToken = req.headers.get('Authorization');
     if (!idToken) {
         return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
     try {
         adminAuth.verifyIdToken(idToken);
-        const body = req.body as Transaction;
+        const body = (await req.json()) as Transaction;
         const docId = createTransactionSummaryId(body);
         const doc = await adminFirestore
             .collection(firestoreConfig.collection.transaction_summary)
