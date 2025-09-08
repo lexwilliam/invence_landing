@@ -1,6 +1,6 @@
 import { cn, scrollToSection } from '@/lib/utils';
 import { useState } from 'react';
-import { MenuItem, HoveredLink, ProductItem, Menu } from './navbar-menu';
+import { MenuItem, HoveredLink, Menu } from './navbar-menu';
 import { assets } from '@/app/assets';
 import Image from 'next/image';
 import { span } from 'framer-motion/client';
@@ -16,7 +16,7 @@ export function Navbar({ className }: { className?: string }) {
                 className,
             )}>
             <Menu setActive={setActive}>
-                <div className="flex flex-row gap-4 items-center w-16">
+                <div className="flex flex-row gap-4 items-center w-20">
                     <img
                         className="w-10 h-10 rounded-lg"
                         src={assets.invenceLogo}
@@ -54,7 +54,7 @@ export function Navbar({ className }: { className?: string }) {
                     </div>
                 </div>
                 <div className="flex items-center sm:hidden">
-                    <HamburgerMenuIcon className="block sm:hidden w-6 h-6" />
+                    <MenuIcon className="block sm:hidden w-6 h-6" />
                 </div>
             </Menu>
         </div>
