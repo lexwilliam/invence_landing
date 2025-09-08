@@ -8,6 +8,7 @@ import {
     InstagramLogoIcon,
     TwitterLogoIcon,
 } from '@radix-ui/react-icons';
+import { HoveredLink } from './navbar-menu';
 
 export function ContactUsFooter() {
     return (
@@ -57,8 +58,8 @@ export function ContactUsFooter() {
                         </div>
                         <div className="flex flex-col gap-4">
                             <span className="font-bold">Legal</span>
-                            <span>Terms of Service</span>
-                            <span>Privacy Policy</span>
+                            <HoveredLink href="/legal/terms-of-service">Terms of Service</HoveredLink>
+                            <HoveredLink href="/legal/privacy-policy">Privacy Policy</HoveredLink>
                         </div>
                     </div>
                 </div>
