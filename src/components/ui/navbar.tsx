@@ -4,6 +4,7 @@ import { MenuItem, HoveredLink, Menu } from './navbar-menu';
 import { assets } from '@/app/assets';
 import Image from 'next/image';
 import { span } from 'framer-motion/client';
+import { MenuIcon } from 'lucide-react';
 import { DownloadIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { Button } from './button';
 
