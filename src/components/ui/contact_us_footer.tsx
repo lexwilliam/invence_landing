@@ -11,7 +11,7 @@ import {
 
 export function ContactUsFooter() {
     return (
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-screen">
             <div className="flex flex-col  bg-secondary py-16 px-10 gap-10">
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                     <Label>Get the latest news from us</Label>
